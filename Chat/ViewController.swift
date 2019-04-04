@@ -8,11 +8,19 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
+    }
+    
+    
+    @objc func handleLogout() {
+        let loginController = LoginViewController()
+        present(loginController, animated: true, completion: nil)
+        
     }
 
 
