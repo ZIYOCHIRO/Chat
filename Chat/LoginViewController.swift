@@ -9,8 +9,6 @@
 import UIKit
 import Firebase
 
-
-
 class LoginViewController: UIViewController {
     
     let rootRef = Database.database().reference()
