@@ -11,6 +11,8 @@ import Firebase
 
 class LoginViewController: UIViewController {
     
+    // reference to messageViewcontroler
+    var messagesController: ViewController?
     let rootRef = Database.database().reference()
 
 
