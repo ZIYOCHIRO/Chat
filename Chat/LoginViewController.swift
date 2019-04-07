@@ -34,6 +34,7 @@ class LoginViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(handleLoginRegister), for: .touchUpInside)
         return button
     }()
@@ -83,6 +84,17 @@ class LoginViewController: UIViewController {
         return sc
     }()
     
+    lazy var profileImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "profile")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        imageView.tintColor = UIColor.white
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hangleSelectProfileImageView)))
+        
+        return imageView
+    }()
     
     
     override func viewDidLoad() {
@@ -92,10 +104,12 @@ class LoginViewController: UIViewController {
         view.addSubview(inputsContainerView)
         view.addSubview(loginRegisterButton)
         view.addSubview(loginRegisterSegmentedControl)
+        view.addSubview(profileImageView)
         
         setupInputsContainerView()
         setupLoginRegisterButton()
         setupLoginRegisterSegmentedControl()
+        setupProfileImageView()
     
         
     }
@@ -122,8 +136,8 @@ class LoginViewController: UIViewController {
         passwordTextFieldHeightAnchor = passwordTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: 1/2)
         passwordTextFieldHeightAnchor?.isActive = true
         
-        
     }
+    
     
     @objc func handleLoginRegister() {
         if loginRegisterSegmentedControl.selectedSegmentIndex == 0 {
@@ -132,61 +146,8 @@ class LoginViewController: UIViewController {
             handleRegister()
         }
     }
-    
-    func handleLogin() {
-        guard let email = emailTextField.text, let password = passwordTextField.text else {
-            print("form is not valid")
-            return
-        }
-        
-        Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
-            if error != nil {
-                print(error!)
-                return
-            }
-            
-            // successfully logged in
-            self.dismiss(animated: true, completion: nil)
-            })
-        
-        
-    }
 
-    func handleRegister() {
-        guard let email = emailTextField.text, let password = passwordTextField.text, let name = nameTextField.text else {
-            print("form is not valid")
-            return
-        }
-        
-        Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
-            
-            if error != nil {
-                print(error!)
-                return
-            }
-            
-            guard let uid = user?.user.uid  else {
-                return
-            }
-            
-            // successfully authenticated user
-            let values = ["name": name, "email": email]
-            let usersReference = self.rootRef.child("users").child(uid)
-            
-            usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
-                if err != nil {
-                    print(err!)
-                    return
-                }
-                
-                print("Saved user successfully into firebase db")
-                self.dismiss(animated: true, completion: nil)
-                })
-            
-            })
-        
-    
-    }
+
     
     func setupLoginRegisterSegmentedControl() {
         // need x, y, width, height, constrains
@@ -204,6 +165,8 @@ class LoginViewController: UIViewController {
     var emailTextFieldHeightAnchor: NSLayoutConstraint?
     // make a referrence to passwordTextField height
     var passwordTextFieldHeightAnchor: NSLayoutConstraint?
+    
+    
     func setupInputsContainerView() {
         
         inputsContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -260,6 +223,14 @@ class LoginViewController: UIViewController {
         loginRegisterButton.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
         loginRegisterButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
+    }
+    
+    func setupProfileImageView()  {
+        // need x, y, width, height, constrains
+        profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        profileImageView.bottomAnchor.constraint(equalTo: loginRegisterSegmentedControl.topAnchor, constant: -15).isActive = true
+        profileImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        profileImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
     }
 
 

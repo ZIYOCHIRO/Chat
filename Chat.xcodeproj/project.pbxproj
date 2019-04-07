@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D1930FE2258C489006A0C66 /* NewMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1930FD2258C489006A0C66 /* NewMessageController.swift */; };
 		0D1931012258DFC2006A0C66 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1931002258DFC2006A0C66 /* User.swift */; };
+		0D1931042259012A006A0C66 /* LoginViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1931032259012A006A0C66 /* LoginViewControllerExtension.swift */; };
 		0DDF57362255F74100671B51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDF57352255F74100671B51 /* AppDelegate.swift */; };
 		0DDF57382255F74100671B51 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DDF57372255F74100671B51 /* ViewController.swift */; };
 		0DDF573B2255F74100671B51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DDF57392255F74100671B51 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		0D1930FD2258C489006A0C66 /* NewMessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageController.swift; sourceTree = "<group>"; };
 		0D1931002258DFC2006A0C66 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0D1931032259012A006A0C66 /* LoginViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerExtension.swift; sourceTree = "<group>"; };
 		0DDF57322255F74100671B51 /* Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DDF57352255F74100671B51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0DDF57372255F74100671B51 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
@@ -59,9 +61,10 @@
 		0D1931022258DFDC006A0C66 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0DDF574722563F6900671B51 /* LoginViewController.swift */,
+				0D1931032259012A006A0C66 /* LoginViewControllerExtension.swift */,
 				0DDF57372255F74100671B51 /* ViewController.swift */,
 				0D1930FD2258C489006A0C66 /* NewMessageController.swift */,
-				0DDF574722563F6900671B51 /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D1931042259012A006A0C66 /* LoginViewControllerExtension.swift in Sources */,
 				0D1930FE2258C489006A0C66 /* NewMessageController.swift in Sources */,
 				0DDF574822563F6900671B51 /* LoginViewController.swift in Sources */,
 				0DDF57382255F74100671B51 /* ViewController.swift in Sources */,
