@@ -84,7 +84,7 @@ extension LoginViewController: UIImagePickerControllerDelegate, UINavigationCont
                     
                     profileImageStorageRef.downloadURL(completion: { (url, error) in
                         if error != nil {
-                            print(error!.localizedDescription)
+                            print(error!)
                             return
                         }
                         // no error
