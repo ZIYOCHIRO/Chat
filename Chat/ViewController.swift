@@ -50,10 +50,13 @@ class ViewController: UITableViewController {
         })
     }
     
+    
+
     func setupNavBarWithUser(user: User) {
         
         let titleView = UIView()
         titleView.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+        titleView.backgroundColor = UIColor.red
 
         
         let containerView = UIView()
@@ -89,9 +92,20 @@ class ViewController: UITableViewController {
         containerView.centerXAnchor.constraint(equalTo: titleView.centerXAnchor).isActive = true
         containerView.centerYAnchor.constraint(equalTo: titleView.centerYAnchor).isActive = true
         
+        
         self.navigationItem.titleView = titleView
+        let tap = UITapGestureRecognizer(target: self, action: #selector(showChatLogController))
+        self.navigationController?.navigationBar.addGestureRecognizer(tap)
+        
+        
         
 
+    }
+    
+    @objc func showChatLogController() {
+  
+        let chatLogController = ChatLogController(collectionViewLayout: UICollectionViewFlowLayout())
+        navigationController?.pushViewController(chatLogController, animated: true)
     }
     
     @objc func handleNewMessage() {

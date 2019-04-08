@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
     }()
     
     lazy var loginRegisterButton: UIButton = {
-       let button = UIButton()
+       let button = UIButton(type: .system)
         button.backgroundColor = UIColor(r: 80, g: 101, b: 161)
         button.setTitle("Register", for: .normal)
         button.setTitleColor(.white, for: .normal)
